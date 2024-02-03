@@ -1,17 +1,17 @@
 body {
   background-color: #607d8b;
-  /* color: ; */
 }
 
 nav {
   background-color: #607d8b;
 }
-nav * {
-  color: white;
-}
 
 nav i {
   color: paleturquoise;
+}
+
+nav li {
+  color: white;
 }
 
 .my-name-sm {
@@ -62,7 +62,8 @@ h2 {
   color: paleturquoise;
 }
 
-#projects .card {
+#projects .card,
+#all-projects .card {
   border-color: paleturquoise;
   border-width: 3px;
 }
@@ -89,6 +90,11 @@ h2 {
   color: blue;
   text-shadow: 0px 0px 1px #fff;
   font-family: monospace;
+}
+
+#accordionFlushFAQs * {
+  background-color: #607d8b;
+  color: paleturquoise;
 }
 
 /* .txt { */

@@ -1,0 +1,43 @@
+{% extends "base.html" %} {% block content %}
+<section id="all-projects" class="py-5">
+  <div class="container">
+    {% for _ in range(10) %}
+    <div class="card mb-3">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img
+            src="{{url_for('static',filename='imgs/photo-1572177812156-58036aae439c')}}"
+            class="img-fluid h-100 rounded-start"
+            alt="..."
+          />
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">
+              This is a wider card with supporting text below as a natural
+              lead-in to additional content. This content is a little bit
+              longer.
+            </p>
+            <div class="row">
+              <div class="col-6">
+                <a href="#" class="btn btn-outline-secondary card-btn">View</a>
+              </div>
+              <div class="col-6 d-flex flex-row-reverse">
+                <a href="#" class="btn btn-outline-secondary card-btn ms-auto"
+                  >Github</a
+                >
+              </div>
+            </div>
+
+            <p class="card-text">
+              <small class="text-body-secondary">Last updated 3 mins ago</small>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

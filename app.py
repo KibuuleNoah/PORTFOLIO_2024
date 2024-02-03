@@ -23,10 +23,32 @@ project = {
 
 projects = [project for _ in range(4)]
 
+qns = {
+    "What is Python?": "Python is a versatile, high-level programming language known for its readability and simplicity. It acts like a reliable assistant, helping automate tasks and solve complex problems.",
+    "What is HTML?": "HTML, or Hypertext Markup Language, serves as the foundation of web content. It's like a detailed blueprint, specifying how text, images, and links should be structured and organized on a webpage.",
+    "What is CSS?": "CSS, or Cascading Style Sheets, is the stylist of the web. It adds flair to HTML by providing color, layout, and design, enhancing the visual appeal of websites.",
+    "What is JavaScript?": "JavaScript is the interactive wizard of the web. It brings websites to life by enabling dynamic elements, like responsive buttons and live updates, making the online experience engaging.",
+    "What is SQL?": "SQL, or Structured Query Language, is the librarian of databases. It's a language for managing and organizing information in digital libraries, making data retrieval and storage efficient.",
+    "What is Golang?": "Golang, or Go, is a programming language designed for efficiency. It acts like a fast courier, delivering tasks in a clean and organized manner, making it suitable for building scalable and reliable software.",
+    "What is C?": "C is the foundation of computer languages. It serves as the architect, constructing the intricate structure of software. C allows computers to understand and execute tasks effectively, making it a powerful language.",
+    "What is GitHub?": "GitHub is like a collaborative workspace for programmers. It's a platform where individuals and teams store, manage, and share their code. Think of it as a digital hub that fosters collaboration and version control in software development.",
+    "What is a Coding Platform?": "A coding platform is an online space where programmers write, test, and execute their code. It provides an environment for coding challenges, projects, and collaborative coding. Think of it as a virtual playground for developers to practice and showcase their skills.",
+}
+
 
 @app.route("/")
 def home():
     return render_template("home.html", skills=skills, projects=projects)
+
+
+@app.route("/projects")
+def projects_():
+    return render_template("projects.html")
+
+
+@app.route("/faqs")
+def faqs():
+    return render_template("faqs.html", qns=qns)
 
 
 @app.template_filter("CSC")
@@ -39,6 +61,11 @@ def classify_skill_color(per: int) -> str:
         return "info"
     else:
         return "success"
+
+
+@app.template_filter("join_faqs")
+def join_faqs(question: str) -> str:
+    return question.replace(" ", "-")[:-1]
 
 
 if __name__ == "__main__":

@@ -1,0 +1,31 @@
+{% extends "base.html" %} {% block content %}
+<section>
+  <div class="container">
+    <div class="accordion accordion-flush" id="accordionFlushFAQs">
+      {% for qn,ans in qns.items() %}
+      <div class="accordion-item">
+        <h2 class="accordion-header" style="background-color: paleturquoise">
+          <button
+            class="accordion-button collapsed"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#{{qn | join_faqs}}"
+            aria-expanded="false"
+            aria-controls="{{qn | join_faqs}}"
+          >
+            {{qn}}
+          </button>
+        </h2>
+        <div
+          id="{{qn | join_faqs}}"
+          class="accordion-collapse collapse"
+          data-bs-parent="#accordionFlushFAQs"
+        >
+          <div class="accordion-body bg-light text-dark">{{ans}}</div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}
