@@ -1,0 +1,256 @@
+{% extends "base.html" %}
+{% block content %}
+<!-- About Me Section -->
+    <section id="about-me" class="py-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-5 col-lg-4 text-center">
+            <!-- Centered Image -->
+            <img
+              src="{{url_for('static',filename='imgs/noah.jpg')}}"
+              class="img-fluid rounded-circle"
+              alt="Your Image"
+            />
+          </div>
+          <div class="d-flex d-md-none col align-items-center justify-content-center mb-3 my-name-md">
+            KIBUULE NOAH
+          </div>
+          <div class="d-none d-md-flex col-md-6 col-lg-7 align-items-center justify-content-center my-name-md">
+            KIBUULE NOAH
+          </div>
+
+          </div>
+        <div class="row">
+          <div class="col-lg-6">
+            <h2 class="display-4">About Me</h2>
+            <p class="lead">
+              Hello, I'm [Your Name], a passionate computer programmer with
+              expertise in [Your Skills]. I have [X years] of experience, and
+              I'm dedicated to creating efficient and innovative solutions.
+              Let's turn ideas into reality!
+            </p><a href="#">know more...</a>
+          </div>
+        </div>
+
+          </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <h2 class="display-4">Skills</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6 offset-lg-3">
+            <p class="lead">I possess a diverse set of skills:</p>
+
+            <!-- Bootstrap Progress Bars -->
+          {% for skill,per in skills.items() %}
+            <div class="progress">
+              <div
+                  class="progress-bar bg-{{per|CSC}}"
+                role="progressbar"
+                style="width: {{per}}%"
+                aria-valuenow="{{per}}"
+                aria-valuemin="0"
+                aria-valuemax="100"
+              >
+              {{skill}}
+              </div>
+                {{per}}%
+            </div>
+            <br />
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-5 bg-light">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <h2 class="display-4">Projects</h2>
+          </div>
+        </div>
+        <div class="row">
+        {% for i in range(4) %}
+
+          <div class="col-lg-4 col-md-6 mb-4">
+            <!-- Project Card -->
+            <div class="card">
+              <img src="project1.jpg" class="card-img-top" alt="Project 1" />
+              <div class="card-body">
+                <h5 class="card-title">Project 1</h5>
+                <p class="card-text">Description of Project 1.</p>
+                <div class="row">
+                  <div class="col-5">
+                    <a href="#" class="btn btn-primary card-btn">View</a>
+                  </div>
+                  <div class="col-5 d-flex flex-col">
+                    <a href="#" class="btn btn-primary card-btn align-self-end">Details</a>
+                  </div>
+                  <div class="col-12 text-center m-1">
+                    <a href="#" class="btn btn-primary card-btn">View On Github</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+          <!-- Add more project cards as needed -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-5 text-muted">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <h2 class="display-4">Experience</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
+            <!-- Experience 1 -->
+            <div class="card mb-3">
+              <div class="card-body">
+                <h5 class="card-title">Job Title 1</h5>
+                <p class="card-text">
+                  Company Name - Location | MM/YYYY - MM/YYYY
+                </p>
+                <p class="card-text">
+                  Description of responsibilities and achievements.
+                </p>
+              </div>
+            </div>
+
+            <!-- Experience 2 -->
+            <div class="card mb-3">
+              <div class="card-body">
+                <h5 class="card-title">Job Title 2</h5>
+                <p class="card-text">
+                  Company Name - Location | MM/YYYY - MM/YYYY
+                </p>
+                <p class="card-text">
+                  Description of responsibilities and achievements.
+                </p>
+              </div>
+            </div>
+            <!-- Add more experience cards as needed -->
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Certificates Section -->
+    <section id="certificates" class="py-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <h2 class="display-4">Certificates</h2>
+          </div>
+        </div>
+        <div class="row">
+          {% for i in range(4) %}
+          <div class="col col-md-6 col-lg-4">
+            <!-- Certificate -->
+            <div class="card mb-3">
+              <img
+                src="certificate1.jpg"
+                class="card-img-top"
+                alt="Certificate {{i}}"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Certificate Title {{i}}</h5>
+                <p class="card-text">Issuing Organization | Date</p>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+          <!-- Add more certificate cards as needed -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Coding Profiles Section -->
+    <section id="coding-profiles" class="py-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <h2 class="display-4">Coding Profiles</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6 offset-lg-3 text-center">
+            <p class="lead">Check out my profiles on coding platforms:</p>
+
+            <!-- Coding Platform Links -->
+            <div class="d-flex justify-content-around">
+              <a
+                href="https://www.codewars.com/users/your_username"
+                target="_blank"
+                class="btn btn-outline-primary"
+                >CodeWars</a
+              >
+              <a
+                href="https://leetcode.com/your_username/"
+                target="_blank"
+                class="btn btn-outline-primary"
+                >LeetCode</a
+              >
+              <!-- Add more platform links as needed -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Contact Me Section -->
+    <section id="contact" class="py-5 bg-light">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <h2 class="display-4">Contact Me</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6 offset-lg-3">
+            <p class="lead">
+              Feel free to reach out for collaboration or any inquiries.
+            </p>
+
+            <!-- Contact Form -->
+            <form>
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Your Name"
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  type="email"
+                  class="form-control"
+                  placeholder="Your Email"
+                />
+              </div>
+              <div class="form-group">
+                <textarea
+                  class="form-control"
+                  rows="5"
+                  placeholder="Your Message"
+                ></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    {% endblock %}

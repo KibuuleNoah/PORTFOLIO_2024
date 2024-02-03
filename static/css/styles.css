@@ -1,0 +1,92 @@
+body {
+  background-color: #607d8b;
+  /* color: ; */
+}
+
+nav {
+  background-color: #607d8b;
+}
+nav * {
+  color: white;
+}
+
+nav i {
+  color: paleturquoise;
+}
+
+.my-name-sm {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.my-name-md {
+  font-size: 2rem;
+  font-weight: 900;
+  /* text-shadow: 3px 0px 2px #000; */
+  text-shadow: 3px 6px 2px #000;
+}
+
+#about-me {
+  background: url("../imgs/pbg.jpg");
+  color: paleturquoise;
+}
+
+#projects {
+  background: url("../imgs/360_F_451399234_4ue5KX3bU2XKlgqFCJPd3Tsgv6cuLDLM.jpg");
+}
+
+#contact {
+  background: url("../imgs/contact_us_illustration.png");
+}
+
+#about-me,
+#projects,
+#contact {
+  /* background: linear-gradient(blue, purple); */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#about-me img {
+  border: 3px solid paleturquoise;
+}
+
+h2 {
+  color: orangered;
+  text-shadow: 3px 0px 2px paleturquoise;
+  font-weight: 600;
+}
+.view-more {
+  border-color: paleturquoise;
+  color: paleturquoise;
+}
+
+#projects .card {
+  border-color: paleturquoise;
+  border-width: 3px;
+}
+
+.card-btn {
+  size: 1rem;
+}
+
+#coding-profiles {
+  background-color: wheat;
+}
+
+/*.section {
+  background-image: url('your-background-image.jpg'); 
+  background-size: cover;
+  position: relative;
+}*/
+
+#contact input,
+#contact textarea {
+  background-color: transparent;
+  background: transparent;
+  backdrop-filter: blur(2px);
+  color: blue;
+  text-shadow: 0px 0px 1px #fff;
+  font-family: monospace;
+}
