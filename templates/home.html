@@ -18,8 +18,15 @@
           <div class="d-none d-md-flex col-md-6 col-lg-7 align-items-center justify-content-center my-name-md">
             KIBUULE NOAH
           </div>
-
+        </div>
+          <div class="row">
+            <div class="col"><i class="bi bi-github"></i></div>
+            <div class="col"><i class="bi bi-whatsapp"></i></div>
+            <div class="col"><i class="bi bi-envelope"></i></div>
+            <div class="col"><i class="bi bi-telephone"></i></div>
+            <div class="col"><i class="bi bi-youtube"></i></div>
           </div>
+
         <div class="row">
           <div class="col-lg-6">
             <h2 class="display-4">About Me</h2>
@@ -79,30 +86,55 @@
           </div>
         </div>
         <div class="row">
-        {% for i in range(4) %}
+        {% for project in projects %}
 
           <div class="col-lg-4 col-md-6 mb-4">
             <!-- Project Card -->
             <div class="card">
-              <img src="project1.jpg" class="card-img-top" alt="Project 1" />
+              <img src="{{url_for('static',filename=project['img_path'])}}" class="card-img-top" alt="Project 1" />
               <div class="card-body">
-                <h5 class="card-title">Project 1</h5>
-                <p class="card-text">Description of Project 1.</p>
+                <h5 class="card-title">{{project["title"]}}</h5>
+                <p class="card-text">{{project["desc"]}}</p>
                 <div class="row">
-                  <div class="col-5">
-                    <a href="#" class="btn btn-primary card-btn">View</a>
+                  <div class="col-6">
+                    <a href="{{project['project_url']}}" class="btn btn-outline-secondary card-btn">View</a>
                   </div>
-                  <div class="col-5 d-flex flex-col">
-                    <a href="#" class="btn btn-primary card-btn align-self-end">Details</a>
+                  <div class="col-6 d-flex flex-row-reverse">
+                    <a href="{{project['details']}}" class="btn btn-outline-secondary card-btn ms-auto">Details</a>
                   </div>
                   <div class="col-12 text-center m-1">
-                    <a href="#" class="btn btn-primary card-btn">View On Github</a>
+                    <a href="{{project['github_url']}}" class="btn btn-outline-secondary card-btn">Github</a>
                   </div>
                 </div>
               </div>
             </div>
           </div>
           {% endfor %}
+<!-- <div class="d-flex mb-3"> -->
+<!--   <div class="p-2">Flex item</div> -->
+<!--   <div class="p-2">Flex item</div> -->
+<!--   <div class="ms-auto p-2">Flex item</div> -->
+<!-- </div> -->
+
+<!--           <div class="card"> -->
+<!--     <img src="{url_for('static',filename=project['img_path'])}}" class="card-img-top" alt="Project 1" /> -->
+<!--     <div class="card-body"> -->
+<!--         <h5 class="card-title">{project["title"]}}</h5> -->
+<!--         <p class="card-text">{project["desc"]}}</p> -->
+<!--         <div class="row"> -->
+<!--             <div class="col-5 d-flex flex-col"> -->
+<!--                 <a href="{project['details']}}" class="btn btn-primary card-btn align-self-start">Details</a> -->
+<!--             </div> -->
+<!--             <div class="col-5"> -->
+<!--                 <a href="{project['project_url']}}" class="btn btn-primary card-btn">View</a> -->
+<!--             </div> -->
+<!--             <div class="col-12 text-center m-1"> -->
+<!--                 <a href="{project['github_url']}}" class="btn btn-primary card-btn">View On Github</a> -->
+<!--             </div> -->
+<!--         </div> -->
+<!--     </div> -->
+<!-- </div> -->
+
           <!-- Add more project cards as needed -->
         </div>
       </div>
@@ -158,11 +190,11 @@
         </div>
         <div class="row">
           {% for i in range(4) %}
-          <div class="col col-md-6 col-lg-4">
+          <div class="col-12 col-md-6 col-lg-4">
             <!-- Certificate -->
             <div class="card mb-3">
               <img
-                src="certificate1.jpg"
+                  src="{{url_for('static',filename='imgs/Kibuule_Noah20230901-72-kc0ndb.jpg')}}"
                 class="card-img-top"
                 alt="Certificate {{i}}"
               />

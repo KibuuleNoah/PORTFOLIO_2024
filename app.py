@@ -12,10 +12,21 @@ skills = {
     "SQL": 80,
 }
 
+project = {
+    "title": "project1",
+    "img_path": "imgs/photo-1572177812156-58036aae439c",
+    "desc": "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
+    "details": "#",
+    "project_url": "#",
+    "github_url": "#",
+}
+
+projects = [project for _ in range(4)]
+
 
 @app.route("/")
 def home():
-    return render_template("home.html", skills=skills)
+    return render_template("home.html", skills=skills, projects=projects)
 
 
 @app.template_filter("CSC")
