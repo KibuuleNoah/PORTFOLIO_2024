@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, render_template_string, url_for
 
 app = Flask(__name__)
 
@@ -49,6 +49,54 @@ def projects_():
 @app.route("/faqs")
 def faqs():
     return render_template("faqs.html", qns=qns)
+
+
+@app.route("/a")
+def a():
+    return render_template_string(
+        """
+  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style type="text/css">
+        h1 {
+            font-size: 90px;
+            white-space: nowrap;
+            overflow: hidden;
+            animation: typewriter 2s steps(13) forwards,
+                        blink 800ms steps(13) 2 normal forwards;
+            border-right: 5px solid blue;
+        }
+
+        @keyframes typewriter {
+            from {
+                width: 0%;
+            }
+            to {
+                width: 100%;
+            }
+        }
+
+        @keyframes blink {
+            0%, 100% {
+                border-color: black;
+            }
+            50% {
+                border-color: transparent;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Hello, World!</h1>
+</body>
+</html>
+
+                                  """
+    )
 
 
 @app.template_filter("CSC")

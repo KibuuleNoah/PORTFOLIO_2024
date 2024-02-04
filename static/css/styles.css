@@ -97,6 +97,52 @@ h2 {
   color: paleturquoise;
 }
 
+.hidden {
+  opacity: 0;
+  filter: blur(5px);
+  transform: translateX(-100%);
+  transition: all 1s;
+}
+
+.show {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateX(0);
+}
+
+/* .display-4 { */
+/*   display: none; */
+/* } */
+/* .typer { */
+/*   display: block; */
+/* font-size: 90px; */
+/* white-space: nowrap; */
+/* overflow: hidden; */
+/* animation: */
+/*   typewriter 5s steps(13) forwards, */
+/*   blink 800ms steps(13) 2 normal forwards; */
+/* border-right: 5px solid blue; */
+/* } */
+/**/
+/* @keyframes typewriter { */
+/*   from { */
+/*     width: 0%; */
+/*   } */
+/*   to { */
+/*     width: 100%; */
+/*   } */
+/* } */
+/**/
+/* @keyframes blink { */
+/*   0%, */
+/*   100% { */
+/*     border-color: black; */
+/*   } */
+/*   50% { */
+/*     border-color: transparent; */
+/*   } */
+/* } */
+
 /* .txt { */
 /*   display: flex; */
 /*   align-items: flex-end; */

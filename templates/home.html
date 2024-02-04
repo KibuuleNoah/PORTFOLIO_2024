@@ -1,6 +1,7 @@
 {% extends "base.html" %}
+{% block title %}Home{% endblock %}
 {% block content %}
-<!-- About Me Section -->
+    <!-- About Me Section -->
     <section id="about-me" class="py-5">
       <div class="container">
         <div class="row">
@@ -18,6 +19,9 @@
           <div class="d-none d-md-flex col-md-6 col-lg-7 align-items-center justify-content-center my-name-md">
             KIBUULE NOAH
           </div>
+        <div class="row">
+          <h2>@<span class="tail"></span></h2>
+        </div>
         </div>
           <div class="row">
             <div class="col"><i class="bi bi-github"></i></div>
@@ -29,7 +33,7 @@
 
         <div class="row">
           <div class="col-lg-6">
-            <h2 class="display-4">About Me</h2>
+            <h2 class="display-4 typer">About Me</h2>
             <p class="lead">
               Hello, I'm [Your Name], a passionate computer programmer with
               expertise in [Your Skills]. I have [X years] of experience, and
@@ -44,11 +48,11 @@
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="py-5">
+    <section id="skills" class="py-5 hidden">
       <div class="container">
         <div class="row">
           <div class="col-lg-12 text-center">
-            <h2 class="display-4">Skills</h2>
+            <h2 class="display-4 typer">Skills</h2>
           </div>
         </div>
         <div class="row">
@@ -57,19 +61,36 @@
 
             <!-- Bootstrap Progress Bars -->
           {% for skill,per in skills.items() %}
-            <div class="progress">
-              <div
-                  class="progress-bar bg-{{per|CSC}}"
-                role="progressbar"
-                style="width: {{per}}%"
-                aria-valuenow="{{per}}"
-                aria-valuemin="0"
-                aria-valuemax="100"
-              >
-              {{skill}}
-              </div>
-                {{per}}%
-            </div>
+            <!-- <div class="progress"> -->
+            <!--   <div -->
+            <!--       class="progress-bar bg-{{per|CSC}}" -->
+            <!--     role="progressbar" -->
+            <!--     style="width: {{per}}%" -->
+            <!--     aria-valuenow="{{per}}" -->
+            <!--     aria-valuemin="0" -->
+            <!--     aria-valuemax="100" -->
+            <!--   > -->
+            <!--   {{skill}} -->
+            <!--   </div> -->
+            <!--     {{per}}% -->
+            <!-- </div> -->
+            
+<div class="progress">
+  <div
+    class="progress-bar bg-{{per|CSC}}"
+    role="progressbar"
+    style="width: 0%"
+    aria-valuenow="0"
+    aria-valuemin="0"
+    aria-valuemax="100"
+    data-percentage="{{per}}"
+  >
+    {{skill}} 
+  </div>
+  <span class="progress-label">0%</span>
+</div>
+
+
             <br />
             {% endfor %}
           </div>
@@ -78,11 +99,11 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="py-5 bg-light">
+    <section id="projects" class="py-5 bg-light hidden">
       <div class="container">
         <div class="row">
           <div class="col-lg-12 text-center">
-            <h2 class="display-4">Projects</h2>
+            <h2 class="display-4 typer">Projects</h2>
           </div>
         </div>
         <div class="row">
@@ -115,11 +136,11 @@
     </section>
 
     <!-- Experience Section -->
-    <section id="experience" class="py-5 text-muted">
+    <section id="experience" class="py-5 text-muted hidden">
       <div class="container">
         <div class="row">
           <div class="col-lg-12 text-center">
-            <h2 class="display-4">Experience</h2>
+            <h2 class="display-4 typer">Experience</h2>
           </div>
         </div>
         <div class="row">
@@ -155,11 +176,11 @@
       </div>
     </section>
     <!-- Certificates Section -->
-    <section id="certificates" class="py-5">
+    <section id="certificates" class="py-5 hidden">
       <div class="container">
         <div class="row">
           <div class="col-lg-12 text-center">
-            <h2 class="display-4">Certificates</h2>
+            <h2 class="display-4 typer">Certificates</h2>
           </div>
         </div>
         <div class="row">
@@ -179,17 +200,16 @@
             </div>
           </div>
           {% endfor %}
-          <!-- Add more certificate cards as needed -->
         </div>
       </div>
     </section>
 
     <!-- Coding Profiles Section -->
-    <section id="coding-profiles" class="py-5">
+    <section id="coding-profiles" class="py-5 hidden">
       <div class="container">
         <div class="row">
           <div class="col-lg-12 text-center">
-            <h2 class="display-4">Coding Profiles</h2>
+            <h2 class="display-4 typer">Coding Profiles</h2>
           </div>
         </div>
         <div class="row">
@@ -217,11 +237,11 @@
       </div>
     </section>
     <!-- Contact Me Section -->
-    <section id="contact" class="py-5 bg-light">
+    <section id="contact" class="py-5 bg-light hidden">
       <div class="container">
         <div class="row">
           <div class="col-lg-12 text-center">
-            <h2 class="display-4">Contact Me</h2>
+            <h2 class="display-4 typer">Contact Me</h2>
           </div>
         </div>
         <div class="row">
@@ -235,28 +255,114 @@
               <div class="form-group">
                 <input
                   type="text"
-                  class="form-control"
+                  class="form-control mb-2"
                   placeholder="Your Name"
                 />
-              </div>
               <div class="form-group">
                 <input
                   type="email"
-                  class="form-control"
+                  class="form-control mb-2"
                   placeholder="Your Email"
                 />
               </div>
               <div class="form-group">
                 <textarea
-                  class="form-control"
+                  class="form-control mb-2"
                   rows="5"
                   placeholder="Your Message"
                 ></textarea>
               </div>
-              <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="submit" class="btn btn-primary m-1">Submit</button>
             </form>
           </div>
         </div>
       </div>
     </section>
+
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<script>
+  $(document).ready(function () {
+    // Function to animate progress bars
+    function animateProgressBars() {
+      $('.progress-bar').each(function () {
+        var progressBar = $(this);
+        var progressLabel = progressBar.next('.progress-label');
+        var width = progressBar.data('percentage');
+        progressBar.animate({ width: width + '%' }, {
+          duration: 1000, // Adjust the animation duration as needed
+          step: function (now) {
+            var percentage = Math.round(now);
+            progressLabel.text(percentage + '%');
+            progressBar.attr('aria-valuenow', percentage);
+          },
+          complete: function () {
+            progressLabel.text(width + '%');
+          }
+        });
+      });
+    }
+
+    // Call the function when the skills section becomes visible
+    $(window).on('scroll', function () {
+      var skillsSection = $('#skills');
+      if (skillsSection.length) {
+        var skillsSectionTop = skillsSection.offset().top;
+        var windowTop = $(window).scrollTop();
+
+        if (windowTop > skillsSectionTop - $(window).height()) {
+          animateProgressBars();
+          $(window).off('scroll'); // Remove the scroll event listener once triggered
+        }
+      }
+    });
+  });
+</script>
+
     {% endblock %}
+
+<!-- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> -->
+<!---->
+<!---->
+<!-- <script> -->
+<!--   $(document).ready(function () { -->
+<!--     // Function to animate progress bars -->
+<!--     function animateProgressBars() { -->
+<!--       $('.progress-bar').each(function () { -->
+<!--         var width = $(this).data('percentage'); -->
+<!--         $(this).animate({ width: width + '%' }, 1000); // Adjust the animation duration as needed -->
+<!--       }); -->
+<!--     } -->
+<!---->
+<!--     // Call the function when the skills section becomes visible -->
+<!--     $(window).on('scroll', function () { -->
+<!--       var skillsSection = $('#skills'); -->
+<!--       if (skillsSection.length) { -->
+<!--         var skillsSectionTop = skillsSection.offset().top; -->
+<!--         var windowTop = $(window).scrollTop(); -->
+<!---->
+<!--         if (windowTop > skillsSectionTop - $(window).height()) { -->
+<!--           animateProgressBars(); -->
+<!--           $(window).off('scroll'); // Remove the scroll event listener once triggered -->
+<!--         } -->
+<!--       } -->
+<!--     }); -->
+<!--   }); -->
+<!-- </script> -->
+<!---->
+<!-- <div class="progress"> -->
+<!--   <div -->
+<!--     class="progress-bar bg-{{per|CSC}}" -->
+<!--     role="progressbar" -->
+<!--     style="width: 0%" -->
+<!--     aria-valuenow="0" -->
+<!--     aria-valuemin="0" -->
+<!--     aria-valuemax="100" -->
+<!--     data-percentage="{{per}}" -->
+<!--   > -->
+<!--     {{skill}} -->
+<!--   </div> -->
+<!--   0% -->
+<!-- </div> -->
+<!---->
