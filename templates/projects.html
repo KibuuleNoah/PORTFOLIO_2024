@@ -30,10 +30,10 @@
           </div>
         </div>
       </div>
-      <button class="btn btn-outline-secondary m-1" type="button" data-bs-toggle="collapse" data-bs-target="#{{project['title']}}" aria-expanded="false" aria-controls="collapseProjectDetails{{i}}">
+      <button class="btn btn-outline-secondary m-1" type="button" data-bs-toggle="collapse" data-bs-target="#{{project['title'] | formId}}" aria-expanded="false" aria-controls="collapseProjectDetails{{i}}">
         Details
       </button>
-      <div class="collapse" id="{{project['title']}}">
+      <div class="collapse" id="{{project['title'] | formId}}">
         <div class="card card-body">{{project['details']}}</div>
       </div>
     </div>

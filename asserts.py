@@ -7,7 +7,7 @@
 #     "github_url": "#",
 # }
 
-from models import FAQs, Project, Skill, db
+from models import Certificate, FAQs, Project, Skill, db
 
 
 class Asserts:
@@ -43,12 +43,15 @@ class Asserts:
     @property
     def projects(self) -> list[dict[str, str | bytes]]:
         projects_ = Project.query.all()
-        projects_ = [self.project_parser(pj) for pj in projects_]
-        return projects_
+        return [self.project_parser(pj) for pj in projects_]
+
+    def cert_parser(self, cert: Certificate) -> dict[str, str | bytes]:
+        return {"image": cert.image, "iss_org": cert.iss_org, "date": cert.date}
 
     @property
-    def certificate(self):
-        return {}
+    def certificates(self):
+        certificates_ = Certificate.query.all()
+        return [self.cert_parser(cert) for cert in certificates_]
 
     @property
     def faqs(self) -> dict[str, str]:

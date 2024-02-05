@@ -39,9 +39,14 @@ nav li {
   background: url("../imgs/contact_us_illustration.png");
 }
 
+.about-me .jumbotron {
+  background: url("../imgs/noah.jpg");
+}
+
 #about-me,
 #projects,
-#contact {
+#contact,
+.about-me .jumbotron {
   /* background: linear-gradient(blue, purple); */
   background-size: cover;
   background-repeat: no-repeat;
@@ -121,6 +126,16 @@ h2 {
 .custom-btn-sec {
   color: paleturquoise;
   border: 1px solid paleturquoise;
+}
+
+.list-group-item-action {
+  background-color: #607d8b;
+}
+
+.about-me {
+  border-left: 1px solid paleturquoise;
+  border-top: 1px solid paleturquoise;
+  border-radius: 5px;
 }
 
 /* .display-4 { */

@@ -14,6 +14,15 @@ hiddenElems.forEach((el) => observer.observe(el));
 
 if (document.title === "Home") {
   main();
+
+  let certToggler = document.getElementById("certToggler");
+  certToggler.addEventListener("click", () => {
+    if (certToggler.innerText == "More") {
+      certToggler.innerText = "Less";
+    } else {
+      certToggler.innerText = "More";
+    }
+  });
 }
 
 String.prototype.toCamelCase = function () {

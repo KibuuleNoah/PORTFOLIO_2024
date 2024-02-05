@@ -8,7 +8,7 @@ from flask import (
 )
 from base64 import b64encode, b64decode
 from asserts import Asserts
-from models import Message, Project, Skill, db, FAQs
+from models import Certificate, Message, Project, Skill, db, FAQs
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///database.db"
@@ -37,8 +37,15 @@ def home():
     #     q = Skill(k, v)
     #     db.session.add(q)
     # db.session.commit()
+    certificates = asserts.certificates
+    certs_displayed = certificates[:4]
+    certs_hidden = certificates[4:]
     return render_template(
-        "home.html", skills=asserts.skills, projects=welcome_projects()
+        "home.html",
+        skills=asserts.skills,
+        certs_displayed=certs_displayed,
+        certs_hidden=certs_hidden,
+        projects=welcome_projects(),
     )
 
 
@@ -50,6 +57,11 @@ def projects_():
 @app.route("/faqs")
 def faqs():
     return render_template("faqs.html", qns=asserts.faqs)
+
+
+@app.route("/aboutme")
+def about_me():
+    return render_template("aboutme.html")
 
 
 @app.route("/contact-me", methods=["POST"])
@@ -89,6 +101,11 @@ def convert_to_base64(data):
         return b64encode(data).decode()
     except Exception as e:
         print("ERROR: ", e)
+
+
+@app.template_filter("formId")
+def formId(dt: str) -> str:
+    return dt.replace(" ", "-")
 
 
 def welcome_projects():

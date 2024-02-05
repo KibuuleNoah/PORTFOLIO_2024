@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base.html" %} 
 {% block title %}Home{% endblock %}
 {% block content %}
     <!-- About Me Section -->
@@ -23,12 +23,12 @@
           <h2>@<span class="tail"></span></h2>
         </div>
         </div>
-          <div class="row">
-            <div class="col"><i class="bi bi-github"></i></div>
-            <div class="col"><i class="bi bi-whatsapp"></i></div>
-            <div class="col"><i class="bi bi-envelope"></i></div>
-            <div class="col"><i class="bi bi-telephone"></i></div>
-            <div class="col"><i class="bi bi-youtube"></i></div>
+          <div class="row quick-links">
+            <div class="col"><a href="https://github.com/KibuuleNoah" style="color:paleturquoise"><i class="bi bi-github"></i></a></div>
+            <div class="col"><a href="tel:+256752983087" style="color:paleturquoise"><i class="bi bi-whatsapp"></i></a></div>
+            <div class="col"><a href="" style="color:paleturquoise"><i class="bi bi-envelope"></i></a></div>
+            <div class="col"><a href="tel:+256752983087" style="color:paleturquoise"6><i class="bi bi-telephone"></i></a></div>
+            <div class="col"><a href="" style="color:paleturquoise"><i class="bi bi-youtube"></i></a></div>
           </div>
 
         <div class="row">
@@ -62,34 +62,21 @@
 
             <!-- Bootstrap Progress Bars -->
           {% for skill,per in skills.items() %}
-            <!-- <div class="progress"> -->
-            <!--   <div -->
-            <!--       class="progress-bar bg-{{per|CSC}}" -->
-            <!--     role="progressbar" -->
-            <!--     style="width: {{per}}%" -->
-            <!--     aria-valuenow="{{per}}" -->
-            <!--     aria-valuemin="0" -->
-            <!--     aria-valuemax="100" -->
-            <!--   > -->
-            <!--   {{skill}} -->
-            <!--   </div> -->
-            <!--     {{per}}% -->
-            <!-- </div> -->
-            
-<div class="progress">
-  <div
-    class="progress-bar bg-{{per|CSC}}"
-    role="progressbar"
-    style="width: 0%"
-    aria-valuenow="0"
-    aria-valuemin="0"
-    aria-valuemax="100"
-    data-percentage="{{per}}"
-  >
-    {{skill}} 
-  </div>
-  <span class="progress-label">0%</span>
-</div>
+               
+            <div class="progress">
+              <div
+                class="progress-bar bg-{{per|CSC}}"
+                role="progressbar"
+                style="width: 0%"
+                aria-valuenow="0"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                data-percentage="{{per}}"
+              >
+                {{skill}} 
+              </div>
+              <span class="progress-label">0%</span>
+            </div>
 
 
             <br />
@@ -130,7 +117,8 @@
               </div>
             </div>
           </div>
-          {% endfor %}
+          {% endfor %} 
+
         </div>
       </div>
     </section>
@@ -185,22 +173,49 @@
           </div>
         </div>
         <div class="row">
-          {% for i in range(4) %}
+          {% for cert_displayed in certs_displayed %}
           <div class="col-12 col-md-6 col-lg-4">
             <!-- Certificate -->
             <div class="card mb-3">
               <img
-                  src="{{url_for('static',filename='imgs/Kibuule_Noah20230901-72-kc0ndb.jpg')}}"
+                src="data:image/png;base64,{{ cert_displayed['image'] | convert_to_base64}}" 
                 class="card-img-top"
-                alt="Certificate {{i}}"
+                alt=""
               />
               <div class="card-body">
-                <h5 class="card-title">Certificate Title {{i}}</h5>
-                <p class="card-text">Issuing Organization | Date</p>
+                <h5 class="card-title">Title...</h5>
+                <p class="card-text">{{ cert_displayed['iss_org'] }} | {{ cert_displayed['date'] }}</p>
               </div>
             </div>
           </div>
           {% endfor %}
+          </div>
+          <div class="collapse" id="certs">
+            <div class="row">
+            {% for cert_hidden in certs_hidden %}
+              <div class="col-12 col-md-6 col-lg-4">
+                <!-- Certificate -->
+                <div class="card mb-3">
+                  <img
+                    src="data:image/png;base64,{{ cert_hidden['image'] | convert_to_base64}}" 
+                    class="card-img-top"
+                    alt=""
+                  />
+                  <div class="card-body">
+                    <h5 class="card-title">Title...</h5>
+                    <p class="card-text">{{ cert_hidden['iss_org'] }} | {{ cert_hidden['date'] }}</p>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+            </div>
+          </div>
+          <div class="col-12 text-center">
+           <button id="certToggler" class="btn btn-outline-secondary border-warning text-warning m-1" type="button" data-bs-toggle="collapse" data-bs-target="#certs" aria-expanded="false" aria-controls="collapseProjectDetails{{i}}">
+            More
+          </button>
+        </div>
+        
         </div>
       </div>
     </section>
