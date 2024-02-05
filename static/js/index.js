@@ -16,6 +16,12 @@ if (document.title === "Home") {
   main();
 }
 
+String.prototype.toCamelCase = function () {
+  return this.replace(/\w+/g, function (w) {
+    return w[0].toUpperCase() + w.slice(1).toLowerCase();
+  });
+};
+
 function sleep(ms) {
   return new Promise((r) => setTimeout(r, ms));
 }
@@ -54,43 +60,55 @@ async function main() {
   }
 }
 
-/*
- * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+const validateEmailFormat = (email) =>
+  /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/.test(email);
 
-body {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+//used to display error and success message to data input form
+const flash = (node, message) => {
+  // node.nextSibling.style.color = "red"
+  node.nextSibling.textContent = message;
+};
+
+const clearFlashedMessages = (nodes) => {
+  nodes.forEach((node) => {
+    node.nextSibling.textContent = "";
+  });
+};
+
+const validateContactForm = () => {
+  let form = document.forms["contact-form"];
+  let name = form["name"];
+  let email = form["email"];
+  let message = form["message"];
+
+  clearFlashedMessages([name, email, message]);
+  if (!name.value) {
+    flash(name, "Name field is empty");
+  } else if (!email.value) {
+    flash(email, "Email field is empty");
+  } else if (!message.value) {
+    flash(message, "Message field is empty");
+  } else if (!validateEmailFormat(email.value)) {
+    flash(email, "Invalid Email format");
+  } else {
+    let data = { name: name.value, email: email.value, message: message.value };
+    fetch("/contact-me", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    document.getElementById("thanks").innerHTML =
+      `Thank you so much <b>${name.value.toCamelCase()}</b> for taking the time to explore my portfolio and send me a message.`;
+
+    name.value = "";
+    email.value = "";
+    message.value = "";
+    "noah".toCamelCase();
+    const toastLiveExample = document.getElementById("liveToast");
+    const toastBootstrap =
+      bootstrap.Toast.getOrCreateInstance(toastLiveExample);
+    toastBootstrap.show();
   }
-  
-.display {
-    box-shadow: 0 0 2px 2px pink;
-    padding: 1rem;
-    border-radius: 5px;
-  }
-
-#btn {
-    padding: 30px;
-    border-radius: 6px;
-    left: 50px;
-    position: absolute;
-    cursor: pointer;
-}
-
-<body>
-    <button id="btn" type="button">Type</button>
-    <div class="display">
-        <span class="root"></span>
-        <span class="tail"></span>
-    </div>
-</body>
- */
+};

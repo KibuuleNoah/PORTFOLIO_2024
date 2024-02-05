@@ -3,43 +3,42 @@
 {% block content %}
 <section id="all-projects" class="py-5">
   <div class="container">
-    {% for _ in range(10) %}
+    {% for project in projects %}
     <div class="card mb-3">
       <div class="row g-0">
         <div class="col-md-4">
           <img
-            src="{{url_for('static',filename='imgs/photo-1572177812156-58036aae439c')}}"
+            src="data:image/png;base64,{{ project['image'] | convert_to_base64}}" 
             class="img-fluid h-100 rounded-start"
             alt="..."
           />
         </div>
-        <div class="col-md-8">
+        <div class="col-md-8" style="background-color: #607d8b">
           <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">
-              This is a wider card with supporting text below as a natural
-              lead-in to additional content. This content is a little bit
-              longer.
-            </p>
+            <h5 class="card-title">{{project['title']}}</h5>
+            <p class="card-text">{{project['desc']}}</p>
             <div class="row">
               <div class="col-6">
-                <a href="#" class="btn btn-outline-secondary card-btn">View</a>
+                <a href="{{project['project_url']}}" class="btn custom-btn-sec card-btn">View</a>
               </div>
               <div class="col-6 d-flex flex-row-reverse">
-                <a href="#" class="btn btn-outline-secondary card-btn ms-auto"
+                <a href="{{project['github_url']}}" class="btn custom-btn-sec card-btn ms-auto"
                   >Github</a
                 >
               </div>
             </div>
-
-            <p class="card-text">
-              <small class="text-body-secondary">Last updated 3 mins ago</small>
-            </p>
           </div>
         </div>
+      </div>
+      <button class="btn btn-outline-secondary m-1" type="button" data-bs-toggle="collapse" data-bs-target="#{{project['title']}}" aria-expanded="false" aria-controls="collapseProjectDetails{{i}}">
+        Details
+      </button>
+      <div class="collapse" id="{{project['title']}}">
+        <div class="card card-body">{{project['details']}}</div>
       </div>
     </div>
     {% endfor %}
   </div>
 </section>
 {% endblock %}
+  
