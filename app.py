@@ -7,8 +7,8 @@ from flask import (
     url_for,
 )
 from base64 import b64encode, b64decode
-from asserts import Asserts
-from models import Certificate, Message, Project, Skill, db, FAQs
+from asserts import Asserts, projects_data
+from models import Certificate, Coding_Platform, Message, Project, Skill, db, FAQs
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///database.db"
@@ -19,32 +19,26 @@ asserts = Asserts()
 
 @app.route("/")
 def home():
-    # pj = Project.query.all()[0]
-    # print(convert_to_base64(pj.image))
-    # with open("./static/imgs/photo-1572177812156-58036aae439c", "rb") as f:
-    #     f = f.read()
-    #     project = Project(
-    #         "test iiiiii",
-    #         f,
-    #         "testing...desc",
-    #         "testing...details",
-    #         "/just/testing",
-    #         "/just/testing",
-    #     )
-    #     db.session.add(project)
-    #     db.session.commit()
-    # for k, v in asserts.skills.items():
-    #     q = Skill(k, v)
-    #     db.session.add(q)
+    # print(data)
+    # cps = [
+    #     ["CodeWars", "https://www.codewars.com/users/Kibuule%20Noah%20"],
+    #     ["Kaggle", "https://www.kaggle.com/tristarnoah"],
+    #     ["SoloLearn", "https://www.sololearn.com/en/profile/30214633"],
+    # ]
+    # for name, link in cps:
+    #     cp = Coding_Platform(name, link)
+    #     db.session.add(cp)
     # db.session.commit()
+
     certificates = asserts.certificates
-    certs_displayed = certificates[:4]
-    certs_hidden = certificates[4:]
+    display_certs = certificates[:4]
+    hidden_certs = certificates[4:]
     return render_template(
         "home.html",
         skills=asserts.skills,
-        certs_displayed=certs_displayed,
-        certs_hidden=certs_hidden,
+        display_certs=display_certs,
+        hidden_certs=hidden_certs,
+        coding_ps=asserts.coding_platforms,
         projects=welcome_projects(),
     )
 

@@ -173,18 +173,18 @@
           </div>
         </div>
         <div class="row">
-          {% for cert_displayed in certs_displayed %}
+          {% for display_cert in display_certs %}
           <div class="col-12 col-md-6 col-lg-4">
             <!-- Certificate -->
             <div class="card mb-3">
               <img
-                src="data:image/png;base64,{{ cert_displayed['image'] | convert_to_base64}}" 
+                src="data:image/png;base64,{{ display_certed['image'] | convert_to_base64}}" 
                 class="card-img-top"
                 alt=""
               />
               <div class="card-body">
-                <h5 class="card-title">Title...</h5>
-                <p class="card-text">{{ cert_displayed['iss_org'] }} | {{ cert_displayed['date'] }}</p>
+                <h5 class="card-title">{{ display_certed['title'] }}</h5>
+                <p class="card-text">{{ display_certed['iss_org'] }} | {{ display_certed['date'] }}</p>
               </div>
             </div>
           </div>
@@ -192,18 +192,18 @@
           </div>
           <div class="collapse" id="certs">
             <div class="row">
-            {% for cert_hidden in certs_hidden %}
+            {% for hidden_cert in hidden_certs %}
               <div class="col-12 col-md-6 col-lg-4">
                 <!-- Certificate -->
                 <div class="card mb-3">
                   <img
-                    src="data:image/png;base64,{{ cert_hidden['image'] | convert_to_base64}}" 
+                    src="data:image/png;base64,{{ hidden_cert['image'] | convert_to_base64}}" 
                     class="card-img-top"
                     alt=""
                   />
                   <div class="card-body">
-                    <h5 class="card-title">Title...</h5>
-                    <p class="card-text">{{ cert_hidden['iss_org'] }} | {{ cert_hidden['date'] }}</p>
+                    <h5 class="card-title">{{ certs_hidden['title'] }}</h5>
+                    <p class="card-text">{{ hidden_cert['iss_org'] }} | {{ hidden_cert['date'] }}</p>
                   </div>
                 </div>
               </div>
@@ -234,19 +234,15 @@
 
             <!-- Coding Platform Links -->
             <div class="d-flex justify-content-around">
+              {% for coding_p in coding_ps %}
               <a
-                href="https://www.codewars.com/users/your_username"
+                href="{{coding_p['link']}}"
                 target="_blank"
                 class="btn btn-outline-primary"
-                >CodeWars</a
+                >{{coding_p['name']}}</a
               >
-              <a
-                href="https://leetcode.com/your_username/"
-                target="_blank"
-                class="btn btn-outline-primary"
-                >LeetCode</a
-              >
-              <!-- Add more platform links as needed -->
+              {% endfor %}
+
             </div>
           </div>
         </div>

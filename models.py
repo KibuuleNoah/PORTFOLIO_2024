@@ -57,11 +57,13 @@ class Project(db.Model):
 class Certificate(db.Model):
     __tablename__ = "certificates"
     id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String, nullable=False)
     image = db.Column(db.LargeBinary, nullable=False)
     iss_org = db.Column(db.String, nullable=False)
     date = db.Column(db.String, nullable=False)
 
-    def __init__(self, image: bytes, iss_org: str, date: str):
+    def __init__(self, title: str, image: bytes, iss_org: str, date: str):
+        self.title = title
         self.image = image
         self.iss_org = iss_org
         self.date = date
@@ -76,3 +78,14 @@ class FAQs(db.Model):
     def __init__(self, question: str, answer: str):
         self.question = question
         self.answer = answer
+
+
+class Coding_Platform(db.Model):
+    __tablename__ = "coding_platform"
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String, nullable=False)
+    link = db.Column(db.String, nullable=False)
+
+    def __init__(self, name: str, link: str) -> None:
+        self.name = name
+        self.link = link
