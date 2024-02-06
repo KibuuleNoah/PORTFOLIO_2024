@@ -39,7 +39,7 @@
               expertise in Frontend,Backend and Systems. I have 2 years of experience, and
               I'm dedicated to creating efficient and innovative solutions.
               Let's turn ideas into reality!
-            </p><a href="#">know more...</a>
+            </p><a href="/aboutme">know more...</a>
           </div>
           <div class="col-12 text-center"><a class="btn btn-outline-secondary border-warning text-info" href="#contact">Message Me</a></div>
         </div>
@@ -178,13 +178,13 @@
             <!-- Certificate -->
             <div class="card mb-3">
               <img
-                src="data:image/png;base64,{{ display_certed['image'] | convert_to_base64}}" 
+                src="data:image/png;base64,{{ display_cert['image'] | convert_to_base64}}" 
                 class="card-img-top"
                 alt=""
               />
               <div class="card-body">
-                <h5 class="card-title">{{ display_certed['title'] }}</h5>
-                <p class="card-text">{{ display_certed['iss_org'] }} | {{ display_certed['date'] }}</p>
+                <h5 class="card-title">{{ display_cert['title'] }}</h5>
+                <p class="card-text">{{ display_cert['iss_org'] }} | {{ display_cert['date'] }}</p>
               </div>
             </div>
           </div>
@@ -202,7 +202,7 @@
                     alt=""
                   />
                   <div class="card-body">
-                    <h5 class="card-title">{{ certs_hidden['title'] }}</h5>
+                    <h5 class="card-title">{{ hidden_cert['title'] }}</h5>
                     <p class="card-text">{{ hidden_cert['iss_org'] }} | {{ hidden_cert['date'] }}</p>
                   </div>
                 </div>

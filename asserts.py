@@ -82,130 +82,131 @@ class Asserts:
         return [{"name": cp.name, "link": cp.link} for cp in coding_platforms_]
 
 
-def RI(path):
-    with open(path, "rb") as f:
-        return f.read()
-
-
-projects_data = [
-    (
-        "Task Manager",
-        RI("./FF/task_manager.jpg"),
-        "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
-        "Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet. Nisi anim cupidatat excepteur officia. Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate voluptate dolor minim nulla est proident. Nostrud officia pariatur ut officia. Sit irure elit esse ea nulla sunt ex occaecat reprehenderit commodo officia dolor Lorem duis laboris cupidatat officia voluptate. Culpa proident adipisicing id nulla nisi laboris ex in Lorem sunt duis officia eiusmod. Aliqua reprehenderit commodo ex non excepteur duis sunt velit enim. Voluptate laboris sint cupidatat ullamco ut ea consectetur et est culpa et culpa duis.",
-        "#",
-        "#",
-    ),
-    (
-        "Notes Keeper",
-        RI("./FF/Note_web.png"),
-        "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
-        "Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet. Nisi anim cupidatat excepteur officia. Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate voluptate dolor minim nulla est proident. Nostrud officia pariatur ut officia. Sit irure elit esse ea nulla sunt ex occaecat reprehenderit commodo officia dolor Lorem duis laboris cupidatat officia voluptate. Culpa proident adipisicing id nulla nisi laboris ex in Lorem sunt duis officia eiusmod. Aliqua reprehenderit commodo ex non excepteur duis sunt velit enim. Voluptate laboris sint cupidatat ullamco ut ea consectetur et est culpa et culpa duis.",
-        "#",
-        "#",
-    ),
-    (
-        "Portfolio",
-        RI("./FF/portfolio.jpg"),
-        "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
-        "Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet. Nisi anim cupidatat excepteur officia. Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate voluptate dolor minim nulla est proident. Nostrud officia pariatur ut officia. Sit irure elit esse ea nulla sunt ex occaecat reprehenderit commodo officia dolor Lorem duis laboris cupidatat officia voluptate. Culpa proident adipisicing id nulla nisi laboris ex in Lorem sunt duis officia eiusmod. Aliqua reprehenderit commodo ex non excepteur duis sunt velit enim. Voluptate laboris sint cupidatat ullamco ut ea consectetur et est culpa et culpa duis.",
-        "#",
-        "#",
-    ),
-    (
-        "USD-UGX Rate Tracker",
-        RI("./FF/USD-UGX.jpg"),
-        "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
-        "Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet. Nisi anim cupidatat excepteur officia. Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate voluptate dolor minim nulla est proident. Nostrud officia pariatur ut officia. Sit irure elit esse ea nulla sunt ex occaecat reprehenderit commodo officia dolor Lorem duis laboris cupidatat officia voluptate. Culpa proident adipisicing id nulla nisi laboris ex in Lorem sunt duis officia eiusmod. Aliqua reprehenderit commodo ex non excepteur duis sunt velit enim. Voluptate laboris sint cupidatat ullamco ut ea consectetur et est culpa et culpa duis.",
-        "#",
-        "#",
-    ),
-]
-
-certificates_data = [
-    (
-        "Intro to Python",
-        RI("Introduction to Python_certificate.jpg"),
-        "SoloLearn",
-        "2023-11-03",
-    ),
-    (
-        "Intro to JS",
-        RI("60fba675-0a5d-4b5c-9cd5-0546b3e1dc4b.png"),
-        "SoloLearn",
-        "2023-10-11",
-    ),
-    (
-        "Intro to ML",
-        RI("Kibuule Noah - Intro to Machine Learning.png"),
-        "Kaggle",
-        "2023-02-09",
-    ),
-    (
-        "Intermediate ML",
-        RI("Kibuule Noah - Intermediate Machine Learning.png"),
-        "Kaggle",
-        "2023-03-12",
-    ),
-    (
-        "Intermediate JS",
-        RI("JavaScript Intermediate_certificate.jpg"),
-        "SoloLearn",
-        "2023-10-11",
-    ),
-    ("Intermediate C", RI("C Intermediate_certificate.jpg"), "SoloLearn", "2023-10-12"),
-    (
-        "Intermediate Python",
-        RI("Python Intermediate_certificate.jpg"),
-        "SoloLearn",
-        "2023-10-04",
-    ),
-    ("Python", RI("Kibuule Noah - Python.png"), "Kaggle", "2023-04-14"),
-    (
-        "FrontEnd-HTML",
-        RI("Kibuule_Noah20230901-72-kc0ndb.jpg"),
-        "GreatLearning",
-        "2023-09-10",
-    ),
-    ("Pandas", RI("Kibuule Noah - Pandas.png"), "Kaggle", "2023-02-19"),
-    (
-        "Data Visualization",
-        RI("Kibuule Noah - Data Visualization.png"),
-        "Kaggle",
-        "2023-04-12",
-    ),
-    (
-        "Feature Engineering",
-        RI(
-            "Kibuule Noah - Feature Engineering.png",
-        ),
-        "Kaggle",
-        "2023-04-24",
-    ),
-    ("Time Series", RI("Kibuule Noah - Time Series.png"), "Kaggle", "2023-07-06"),
-]
-
-
-def rebuild_projects_table() -> None:
-    """
-    But you must have to clear the table first and make
-    it blank to get the expected resluts
-    """
-    for pj_d in projects_data:
-        pj = Project(*pj_d)
-        db.session.add(pj)
-    db.session.commit()
-
-
-def rebuild_certificate_table() -> None:
-    """
-    But you must have to clear the table first and make
-    it blank to get the expected resluts
-    """
-    for dt in certificates_data:
-        cert = Certificate(*dt)
-        db.session.add(cert)
-        db.session.commit()
-
-
-print("Yooooooooo Yooooooooo Yooooooooo Yooooooooo")
+#
+# def RI(path):
+#     with open(path, "rb") as f:
+#         return f.read()
+#
+#
+# projects_data = [
+#     (
+#         "Task Manager",
+#         RI("./FF/task_manager.jpg"),
+#         "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
+#         "Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet. Nisi anim cupidatat excepteur officia. Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate voluptate dolor minim nulla est proident. Nostrud officia pariatur ut officia. Sit irure elit esse ea nulla sunt ex occaecat reprehenderit commodo officia dolor Lorem duis laboris cupidatat officia voluptate. Culpa proident adipisicing id nulla nisi laboris ex in Lorem sunt duis officia eiusmod. Aliqua reprehenderit commodo ex non excepteur duis sunt velit enim. Voluptate laboris sint cupidatat ullamco ut ea consectetur et est culpa et culpa duis.",
+#         "#",
+#         "#",
+#     ),
+#     (
+#         "Notes Keeper",
+#         RI("./FF/Note_web.png"),
+#         "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
+#         "Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet. Nisi anim cupidatat excepteur officia. Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate voluptate dolor minim nulla est proident. Nostrud officia pariatur ut officia. Sit irure elit esse ea nulla sunt ex occaecat reprehenderit commodo officia dolor Lorem duis laboris cupidatat officia voluptate. Culpa proident adipisicing id nulla nisi laboris ex in Lorem sunt duis officia eiusmod. Aliqua reprehenderit commodo ex non excepteur duis sunt velit enim. Voluptate laboris sint cupidatat ullamco ut ea consectetur et est culpa et culpa duis.",
+#         "#",
+#         "#",
+#     ),
+#     (
+#         "Portfolio",
+#         RI("./FF/portfolio.jpg"),
+#         "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
+#         "Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet. Nisi anim cupidatat excepteur officia. Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate voluptate dolor minim nulla est proident. Nostrud officia pariatur ut officia. Sit irure elit esse ea nulla sunt ex occaecat reprehenderit commodo officia dolor Lorem duis laboris cupidatat officia voluptate. Culpa proident adipisicing id nulla nisi laboris ex in Lorem sunt duis officia eiusmod. Aliqua reprehenderit commodo ex non excepteur duis sunt velit enim. Voluptate laboris sint cupidatat ullamco ut ea consectetur et est culpa et culpa duis.",
+#         "#",
+#         "#",
+#     ),
+#     (
+#         "USD-UGX Rate Tracker",
+#         RI("./FF/USD-UGX.jpg"),
+#         "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
+#         "Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet. Nisi anim cupidatat excepteur officia. Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate voluptate dolor minim nulla est proident. Nostrud officia pariatur ut officia. Sit irure elit esse ea nulla sunt ex occaecat reprehenderit commodo officia dolor Lorem duis laboris cupidatat officia voluptate. Culpa proident adipisicing id nulla nisi laboris ex in Lorem sunt duis officia eiusmod. Aliqua reprehenderit commodo ex non excepteur duis sunt velit enim. Voluptate laboris sint cupidatat ullamco ut ea consectetur et est culpa et culpa duis.",
+#         "#",
+#         "#",
+#     ),
+# ]
+#
+# certificates_data = [
+#     (
+#         "Intro to Python",
+#         RI("Introduction to Python_certificate.jpg"),
+#         "SoloLearn",
+#         "2023-11-03",
+#     ),
+#     (
+#         "Intro to JS",
+#         RI("60fba675-0a5d-4b5c-9cd5-0546b3e1dc4b.png"),
+#         "SoloLearn",
+#         "2023-10-11",
+#     ),
+#     (
+#         "Intro to ML",
+#         RI("Kibuule Noah - Intro to Machine Learning.png"),
+#         "Kaggle",
+#         "2023-02-09",
+#     ),
+#     (
+#         "Intermediate ML",
+#         RI("Kibuule Noah - Intermediate Machine Learning.png"),
+#         "Kaggle",
+#         "2023-03-12",
+#     ),
+#     (
+#         "Intermediate JS",
+#         RI("JavaScript Intermediate_certificate.jpg"),
+#         "SoloLearn",
+#         "2023-10-11",
+#     ),
+#     ("Intermediate C", RI("C Intermediate_certificate.jpg"), "SoloLearn", "2023-10-12"),
+#     (
+#         "Intermediate Python",
+#         RI("Python Intermediate_certificate.jpg"),
+#         "SoloLearn",
+#         "2023-10-04",
+#     ),
+#     ("Python", RI("Kibuule Noah - Python.png"), "Kaggle", "2023-04-14"),
+#     (
+#         "FrontEnd-HTML",
+#         RI("Kibuule_Noah20230901-72-kc0ndb.jpg"),
+#         "GreatLearning",
+#         "2023-09-10",
+#     ),
+#     ("Pandas", RI("Kibuule Noah - Pandas.png"), "Kaggle", "2023-02-19"),
+#     (
+#         "Data Visualization",
+#         RI("Kibuule Noah - Data Visualization.png"),
+#         "Kaggle",
+#         "2023-04-12",
+#     ),
+#     (
+#         "Feature Engineering",
+#         RI(
+#             "Kibuule Noah - Feature Engineering.png",
+#         ),
+#         "Kaggle",
+#         "2023-04-24",
+#     ),
+#     ("Time Series", RI("Kibuule Noah - Time Series.png"), "Kaggle", "2023-07-06"),
+# ]
+#
+#
+# def rebuild_projects_table() -> None:
+#     """
+#     But you must have to clear the table first and make
+#     it blank to get the expected resluts
+#     """
+#     for pj_d in projects_data:
+#         pj = Project(*pj_d)
+#         db.session.add(pj)
+#     db.session.commit()
+#
+#
+# def rebuild_certificate_table() -> None:
+#     """
+#     But you must have to clear the table first and make
+#     it blank to get the expected resluts
+#     """
+#     for dt in certificates_data:
+#         cert = Certificate(*dt)
+#         db.session.add(cert)
+#         db.session.commit()
+#
+#
+# print("Yooooooooo Yooooooooo Yooooooooo Yooooooooo")

@@ -39,8 +39,11 @@ nav li {
   background: url("../imgs/contact_us_illustration.png");
 }
 
-.about-me .jumbotron {
-  background: url("../imgs/noah.jpg");
+/* .about-me .jumbotron { */
+/* background: url("../imgs/noah.jpg"); */
+/* } */
+.about-me {
+  color: paleturquoise;
 }
 
 #about-me,
@@ -142,6 +145,10 @@ h2 {
   border-radius: 5px;
 }
 
+.about-me-content p {
+  border-left: 2px solid orange;
+  padding-left: 1%;
+}
 /* .display-4 { */
 /*   display: none; */
 /* } */

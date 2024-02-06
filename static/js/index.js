@@ -12,6 +12,10 @@ const observer = new IntersectionObserver((entries) => {
 const hiddenElems = document.querySelectorAll("section");
 hiddenElems.forEach((el) => observer.observe(el));
 
+if (document.title !== "Home") {
+  document.getElementById("cert-link").style.display = "none";
+}
+
 if (document.title === "Home") {
   main();
 

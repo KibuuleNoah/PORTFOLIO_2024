@@ -7,7 +7,9 @@ from flask import (
     url_for,
 )
 from base64 import b64encode, b64decode
-from asserts import Asserts, projects_data
+from asserts import Asserts
+
+# projects_data
 from models import Certificate, Coding_Platform, Message, Project, Skill, db, FAQs
 
 app = Flask(__name__)
@@ -107,7 +109,7 @@ def welcome_projects():
     return [asserts.project_parser(pj) for pj in projects]
 
 
-if __name__ == "__main__":
-    app.app_context().push()
-    db.create_all()
-    app.run(debug=True)
+# if __name__ == "__main__":
+#     app.app_context().push()
+#     db.create_all()
+#     app.run(debug=True)
