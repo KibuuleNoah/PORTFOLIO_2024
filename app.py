@@ -2,18 +2,16 @@ from flask import (
     Flask,
     jsonify,
     render_template,
-    render_template_string,
     request,
     url_for,
 )
-from base64 import b64encode, b64decode
+from base64 import b64encode
 from asserts import Asserts
 
-# projects_data
-from models import Certificate, Coding_Platform, Message, Project, Skill, db, FAQs
+from models import Message, Project, db
 
 app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///database.db"
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///self/safe/database.db"
 db.init_app(app)
 
 asserts = Asserts()
@@ -21,20 +19,12 @@ asserts = Asserts()
 
 @app.route("/")
 def home():
-    # print(data)
-    # cps = [
-    #     ["CodeWars", "https://www.codewars.com/users/Kibuule%20Noah%20"],
-    #     ["Kaggle", "https://www.kaggle.com/tristarnoah"],
-    #     ["SoloLearn", "https://www.sololearn.com/en/profile/30214633"],
-    # ]
-    # for name, link in cps:
-    #     cp = Coding_Platform(name, link)
-    #     db.session.add(cp)
-    # db.session.commit()
-
-    certificates = asserts.certificates
-    display_certs = certificates[:4]
-    hidden_certs = certificates[4:]
+    try:
+        certificates = asserts.certificates
+        display_certs = certificates[:4]
+        hidden_certs = certificates[4:]
+    except:
+        display_certs, hidden_certs = [], []
     return render_template(
         "home.html",
         skills=asserts.skills,
@@ -65,10 +55,30 @@ def contact_me():
     data = request.json
     if data:
         name, email, message = data.values()
+
         msg = Message(name, email, message)
         db.session.add(msg)
         db.session.commit()
     return jsonify({})
+
+
+@app.route("/vmsgs", methods=["GET", "POST"])
+def view_messages():
+    if request.method == "POST":
+        password = request.form.get("adim-password", "")
+        if password and password == "noport$$$":
+            messages = Message.query.all()
+            messages = [
+                {
+                    "name": obj.name,
+                    "email": obj.email,
+                    "message": obj.message,
+                    "date": obj.datetime,
+                }
+                for obj in messages
+            ]
+            return render_template("messages.html", messages=messages)
+    return "<h1>Adim<h1><form method='POST'><br><input type='password' name='adim-password' placeholder='adim password' required/></form>"
 
 
 @app.template_filter("CSC")
@@ -109,7 +119,7 @@ def welcome_projects():
     return [asserts.project_parser(pj) for pj in projects]
 
 
-# if __name__ == "__main__":
-#     app.app_context().push()
-#     db.create_all()
-#     app.run(debug=True)
+if __name__ == "__main__":
+    app.app_context().push()
+    db.create_all()
+    app.run(debug=True)

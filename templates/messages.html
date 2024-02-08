@@ -1,0 +1,19 @@
+{% extends "base.html" %} {% block title %}Messages{% endblock %} {% block
+content %}
+<div class="container">
+  <h1 align="center">MESSAGES</h1>
+  {% for msg in messages %}
+  <div class="card mb-3 bg-dark text-info">
+    <div class="card-header">
+      {{msg['name']}} <span class="text-light">{{msg['email']}}</span>
+    </div>
+    <div class="card-body">
+      <p class="card-text">{{msg['message']}}</p>
+    </div>
+    <div class="card-footer text-light">
+      {{msg['date']}}
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

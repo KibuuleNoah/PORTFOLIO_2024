@@ -82,6 +82,18 @@ class Asserts:
         return [{"name": cp.name, "link": cp.link} for cp in coding_platforms_]
 
 
+# print(data)
+# cps = [
+#     ["CodeWars", "https://www.codewars.com/users/Kibuule%20Noah%20"],
+#     ["Kaggle", "https://www.kaggle.com/tristarnoah"],
+#     ["SoloLearn", "https://www.sololearn.com/en/profile/30214633"],
+# ]
+# for name, link in cps:
+#     cp = Coding_Platform(name, link)
+#     db.session.add(cp)
+# db.session.commit()
+
+
 #
 # def RI(path):
 #     with open(path, "rb") as f:

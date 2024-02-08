@@ -1,4 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
+import datetime
 
 db = SQLAlchemy()
 
@@ -9,6 +10,7 @@ class Message(db.Model):
     name = db.Column(db.String)
     email = db.Column(db.String)
     message = db.Column(db.String)
+    datetime = db.Column(db.DateTime(timezone=True), default=datetime.datetime.now())
 
     def __init__(self, name: str, email: str, message: str) -> None:
         self.name = name
@@ -17,7 +19,7 @@ class Message(db.Model):
 
 
 class Skill(db.Model):
-    __tablename__ = "skils"
+    __tablename__ = "skills"
     id = db.Column(db.Integer, primary_key=True)
     skill = db.Column(db.String, unique=True)
     percentage = db.Column(db.Integer)
@@ -81,7 +83,7 @@ class FAQs(db.Model):
 
 
 class Coding_Platform(db.Model):
-    __tablename__ = "coding_platform"
+    __tablename__ = "coding_platforms"
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, nullable=False)
     link = db.Column(db.String, nullable=False)

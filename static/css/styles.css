@@ -143,46 +143,10 @@ h2 {
   border-left: 1px solid paleturquoise;
   border-top: 1px solid paleturquoise;
   border-radius: 5px;
+  overflow: hidden;
 }
 
 .about-me-content p {
   border-left: 2px solid orange;
   padding-left: 1%;
 }
-/* .display-4 { */
-/*   display: none; */
-/* } */
-/* .typer { */
-/*   display: block; */
-/* font-size: 90px; */
-/* white-space: nowrap; */
-/* overflow: hidden; */
-/* animation: */
-/*   typewriter 5s steps(13) forwards, */
-/*   blink 800ms steps(13) 2 normal forwards; */
-/* border-right: 5px solid blue; */
-/* } */
-/**/
-/* @keyframes typewriter { */
-/*   from { */
-/*     width: 0%; */
-/*   } */
-/*   to { */
-/*     width: 100%; */
-/*   } */
-/* } */
-/**/
-/* @keyframes blink { */
-/*   0%, */
-/*   100% { */
-/*     border-color: black; */
-/*   } */
-/*   50% { */
-/*     border-color: transparent; */
-/*   } */
-/* } */
-
-/* .txt { */
-/*   display: flex; */
-/*   align-items: flex-end; */
-/* } */
