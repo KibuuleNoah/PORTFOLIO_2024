@@ -119,7 +119,7 @@ def welcome_projects():
     return [asserts.project_parser(pj) for pj in projects]
 
 
-if __name__ == "__main__":
-    app.app_context().push()
-    db.create_all()
-    app.run(debug=True)
+# if __name__ == "__main__":
+# app.app_context().push()
+# db.create_all()
+# app.run(debug=True)
